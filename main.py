@@ -33,14 +33,16 @@ def new_invoice():
 
 
 def generate_invoice():
-    doc  = DocxTemplate('invoice_template.docx') ##first Import docx template, now its time to load tempalate and this line is used to load tempate
+    doc  = DocxTemplate('invoice_template_update.docx') ##first Import docx template, now its time to load tempalate and this line is used to load tempate
     name = first_name_entry.get()+last_name_entry.get()
     phone = phone_entry.get()
     subtotal = sum(item[3] for item in invoice_list)
     salestax =0.1
     total = subtotal*(1-salestax)
+    company = 'ABC PVT LTD.'
 
     doc.render({'name':name,
+                "Company" : company,
                 "phone":phone,
                 "invoice_list":invoice_list,
                 "subtotal":subtotal,
